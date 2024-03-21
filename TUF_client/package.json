@@ -74,6 +74,8 @@
     "@emotion/styled": "^11.11.0",
     "@monaco-editor/react": "^4.6.0",
     "axios": "^1.6.8",
+    "chakra-ui": "^0.3.9",
+    "dotenv": "^16.4.5",
     "framer-motion": "^11.0.20",
     "i": "^0.3.7",
     "monaco-themes": "^0.4.4",
