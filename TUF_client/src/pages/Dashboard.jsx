@@ -35,8 +35,8 @@ import Landing from '../components/Landing';
 import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 const LinkItems = [
-  { name: 'Submit Code', icon: FiHome, link: "/submissions" },
-  { name: 'View Submissions', icon: FiTrendingUp, link: "/submissions" },
+  { name: 'Submit Code', icon: FiHome, link: "/Dash" },
+  { name: 'View Submissions', icon: FiTrendingUp, link: "/Submissions" },
   { name: 'Explore', icon: FiCompass, link: "/submissions" },
  
 ];
