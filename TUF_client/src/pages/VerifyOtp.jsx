@@ -12,6 +12,7 @@ import {
     Link,
     PinInput,
     PinInputField,
+    Spinner,
     Stack,
     Text,
   } from '@chakra-ui/react'
@@ -30,7 +31,7 @@ import 'react-toastify/dist/ReactToastify.css';
     
 
 
-  
+
     
     
     const navigate = useNavigate();
@@ -40,6 +41,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 
     const verify = () =>{
+      setloader(true)
       var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
@@ -59,6 +61,7 @@ const url = config.baseurl+urls.verifyotp
 fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => {console.log(result)
+    setloader(false)
     if (result.verified) {
       localStorage.setItem('accessToken', result.accessToken);
       console.log('Access token stored in local storage:', result.accessToken);
@@ -68,7 +71,10 @@ fetch(url, requestOptions)
     }
   
   })
-  .catch(error => console.log('error', error));
+  .catch(error =>{ console.log('error', error)
+  setloader(false)
+  toast("Something went wrong")
+});
 
     }
 
@@ -76,6 +82,7 @@ fetch(url, requestOptions)
       const newOtp = otp.slice(0, index) + value + otp.slice(index + 1);
       setOtp(newOtp);
     };
+    const[loader,setloader] = useState(false)
     return (
     <Container
     height={"40rem"}
@@ -125,14 +132,15 @@ fetch(url, requestOptions)
         
             
             <Stack spacing="6">
-              <Button
-              onClick={()=>{ 
-                // navigate("/Dash", );
+            {!loader?<Button
+              onClick={()=>{  
+
                 verify()
-            }
             
-            }
-              >Continue</Button>
+            }}
+
+              >Continue</Button>:
+              <Spinner size={"md"} justifyContent={"center"} alignSelf={"center"}/>}
               <HStack>
                
               </HStack>

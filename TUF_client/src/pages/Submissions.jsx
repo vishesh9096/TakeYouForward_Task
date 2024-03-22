@@ -22,6 +22,7 @@ const Submissions = () => {
   
 
   const [data, setdata] = useState([])
+  const[loader,setloader] = useState(true)
   useEffect(() => {
     const getdata = async () => {
       var myHeaders = new Headers();

@@ -66,7 +66,7 @@ const generateotp =()=>{
       }
         );
 
-        setloader(false)
+        // setloader(false)
     }
 
 
