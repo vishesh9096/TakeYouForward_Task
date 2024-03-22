@@ -94,7 +94,7 @@ fetch(url, requestOptions)
         <Stack spacing="6">
           <Logo />
           <Stack spacing={{ base: '2', md: '3' }} textAlign="center">
-            <Heading size={{ base: 'xl', md: 'xl' }}>Verify OTP {email}</Heading>
+            <Heading size={{ base: 'xl', md: 'xl' }}>Verify OTP {email} (use 2121)</Heading>
           
           </Stack>
         </Stack>

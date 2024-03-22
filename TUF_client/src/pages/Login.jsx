@@ -12,7 +12,7 @@ import {
     PinInput,
     PinInputField,
     Stack,
-    Text,
+    Text,Spinner
   } from '@chakra-ui/react'
 import PasswordField from '../components/PasswordField'
 import Logo from '../components/Logo'
@@ -38,6 +38,7 @@ const generateotp =()=>{
     console.log("invalid email")
     return;
   }
+  setloader(true)
   
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -56,23 +57,25 @@ const generateotp =()=>{
       fetch(url, requestOptions)
         .then(response => response.json())
         .then(result => {console.log(result)
-          
+          setloader(false)
           navigate("/Verify", { state: { email: email } });
         })
         .catch(error => {console.log('error', error)
       toast("Something went wrong!")
+      setloader(false)
       }
         );
 
-
+        setloader(false)
     }
 
 
 
-
+const [loader,setloader] = useState(false)
     const navigate = useNavigate();
     return  (
       <>
+     
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -122,15 +125,16 @@ const generateotp =()=>{
 </HStack> */}
             
             <Stack spacing="6">
-
-              <Button
+          {!loader?<Button
               onClick={()=>{  
 
                 generateotp()
             
             }}
 
-              >Continue</Button>
+              >Continue</Button>:
+              <Spinner size={"md"} justifyContent={"center"} alignSelf={"center"}/>}
+              
 
               <HStack>
                
